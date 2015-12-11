@@ -20,12 +20,13 @@ import org.json.JSONObject;
 
 public class FullFilmActivity extends AppCompatActivity {
 
-    TMDbFilm tmDbFilm;
-    ImageView backdropImage, titleImage;
-    TextView title, realiseYear, overview, popularity, voteCount;
-    ProgressBar progressBar;
-    LinearLayout gallery;
-    Context context;
+    private TMDbFilm tmDbFilm;
+    private ImageView backdropImage, titleImage;
+    private TextView title, realiseYear, overview, popularity, voteCount;
+    private ProgressBar progressBar;
+    private LinearLayout gallery;
+    private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +37,14 @@ public class FullFilmActivity extends AppCompatActivity {
 
         backdropImage = (ImageView) findViewById(R.id.backdrop_image);
         Ion.with(this)
-                .load(tmDbFilm.getBackdropUrl(backdropSize.W1280))
+                .load(tmDbFilm.getBackdropUrl(BackdropSize.W1280))
                 .withBitmap()
                 .placeholder(R.drawable.backdrop_placeholder_w300)
                 .intoImageView(backdropImage);
 
         titleImage = (ImageView) findViewById(R.id.title_image);
         Ion.with(this)
-                .load(tmDbFilm.getPosterUrl(posterSize.W342))
+                .load(tmDbFilm.getPosterUrl(PosterSize.W342))
                 .withBitmap()
                 .placeholder(R.drawable.poster_placeholder_w342)
                 .intoImageView(titleImage);
@@ -74,8 +75,7 @@ public class FullFilmActivity extends AppCompatActivity {
 
         context = this;
     }
-
-    void addFilmsToGallery() {
+    public void addFilmsToGallery() {
         TMDbAPI tmDbAPI = TMDbAPI.getInstance(this);
         tmDbAPI.sendImagesRequest(tmDbFilm.id, new Response.Listener<JSONObject>() {
             @Override
@@ -89,8 +89,7 @@ public class FullFilmActivity extends AppCompatActivity {
             }
         });
     }
-
-    FilmBackdrop[] getFilmBackdrops(JSONObject response) {
+    public FilmBackdrop[] getFilmBackdrops(JSONObject response) {
         FilmBackdrop filmBackdrops[] = null;
         try {
             JSONArray jsonArray = response.getJSONArray("backdrops");

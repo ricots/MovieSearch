@@ -20,7 +20,6 @@ public class TMDbFilmPage {
             e.printStackTrace();
         }
     }
-
     public String getFilmTitles() {
         String titles = new String();
         for(int i = 0; i < films.length(); i++)
@@ -49,7 +48,6 @@ public class TMDbFilmPage {
         }
         return titles;
     }
-
     public Integer[] getFilmIds() {
         Integer ids[] = new Integer[films.length()];
         try {
@@ -72,7 +70,6 @@ public class TMDbFilmPage {
         }
         return id;
     }
-
     public Integer getPageNumber() {
         Integer page = 0;
         try {
@@ -101,7 +98,6 @@ public class TMDbFilmPage {
         return totalResults;
     }
     public Integer getFilmsNumber() {return films.length();}
-
     public TMDbFilm[] getFilms() {
         TMDbFilm film[] = new TMDbFilm[films.length()];
         for (int i = 0; i < films.length(); i++)

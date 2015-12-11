@@ -16,20 +16,16 @@ import android.widget.TextView;
 import com.android.volley.toolbox.ImageRequest;
 import com.koushikdutta.ion.Ion;
 
-/**
- * Created by Baggins on 01.12.2015.
- */
 public class FilmListAdapter extends ArrayAdapter<TMDbFilm> {
 
-    Context context;
-    TMDbFilm[] films;
+    private Context context;
+    private TMDbFilm[] films;
 
     public FilmListAdapter(Context context, TMDbFilm[] films) {
         super(context, R.layout.film_list_row, films);
         this.context = context;
         this.films = films;
     }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
@@ -37,7 +33,7 @@ public class FilmListAdapter extends ArrayAdapter<TMDbFilm> {
 
         ImageView poster = (ImageView)convertView.findViewById(R.id.poster);
         Ion.with(context)
-                .load(films[position].getPosterUrl(posterSize.W185))
+                .load(films[position].getPosterUrl(PosterSize.W185))
                 .withBitmap().
                 placeholder(R.drawable.poster_placeholder_w185)
                 .intoImageView(poster);

@@ -3,13 +3,10 @@ package com.example.baggins.moviesearch;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by Baggins on 02.12.2015.
- */
 public class FilmBackdrop {
-    static final String prefix_path = "https://image.tmdb.org/t/p/";
-    String filePath;
-    Integer height, width;
+    private static final String prefix_path = "https://image.tmdb.org/t/p/";
+    private String filePath;
+    private Integer height, width;
 
     FilmBackdrop(JSONObject backdrop) {
         try {
@@ -20,10 +17,11 @@ public class FilmBackdrop {
             e.printStackTrace();
         }
     }
-
-    String getUrl(backdropSize size){
+    String getUrl(BackdropSize size){
         String url = prefix_path.concat(size.toString());
         url = url.concat(filePath);
         return url;
     }
+    Integer GetHeight() {return height;}
+    Integer GetWidth() {return width;}
 }

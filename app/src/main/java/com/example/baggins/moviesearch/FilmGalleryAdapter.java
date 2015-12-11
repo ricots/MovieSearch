@@ -19,14 +19,13 @@ public class FilmGalleryAdapter extends ArrayAdapter<FilmBackdrop> {
         this.context = context;
         filmBackdrops = objects;
     }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
         convertView = inflater.inflate(R.layout.gallery_row, parent, false);
         ImageView view = (ImageView) convertView.findViewById(R.id.image);
         Ion.with(context)
-                .load(filmBackdrops[position].getUrl(backdropSize.W780))
+                .load(filmBackdrops[position].getUrl(BackdropSize.W780))
                 .withBitmap()
                 .placeholder(R.drawable.backdrop_placeholder_w780)
                 .intoImageView(view);

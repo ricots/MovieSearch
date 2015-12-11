@@ -45,7 +45,6 @@ public class TMDbFilm implements Serializable {
         }
 
     }
-
     public Integer[] getGenreIDs(JSONObject film) {
         try {
             JSONArray genreArray = film.getJSONArray("genre_ids");
@@ -59,11 +58,10 @@ public class TMDbFilm implements Serializable {
             return  null;
         }
     }
-
     public String[] getGenres() {
             try {
                 String genresString[] = new String[genre_ids.length];
-                JSONObject TMDbAPIGenresObject = new JSONObject(TMDbAPI.genreString);
+                JSONObject TMDbAPIGenresObject = new JSONObject(GlobalStrings.genreString);
                 JSONArray TMDbAPIGenresObjectArray = TMDbAPIGenresObject.getJSONArray("genres");
                 for(int i = 0; i < genre_ids.length; i++) {
                     for(int j = 0; j < TMDbAPIGenresObjectArray.length(); j++) {
@@ -81,15 +79,13 @@ public class TMDbFilm implements Serializable {
             }
 
     }
-
-    public String getPosterUrl(posterSize size) {
+    public String getPosterUrl(PosterSize size) {
         String url;
         url = path_poster_prefix.concat(size.toString());
         url = url.concat(poster_path);
         return url;
     }
-
-    public String getBackdropUrl(backdropSize size) {
+    public String getBackdropUrl(BackdropSize size) {
         String url;
         url = path_poster_prefix.concat(size.toString());
         url = url.concat(backdrop_path);

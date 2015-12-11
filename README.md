@@ -1,6 +1,6 @@
 # MovieSearch
 
-Mockups:
+#### Mockups
 ![](https://github.com/vovapupkin/MovieSearch/blob/master/Mockup.png)
 
 #### Dependencies

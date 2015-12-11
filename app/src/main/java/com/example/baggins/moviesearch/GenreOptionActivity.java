@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class GenreOptionActivity extends Activity implements View.OnClickListener {
 
-    ListView genreListView ;
-    TMDbAPI tmDbAPI;
+    private ListView genreListView ;
+    private TMDbAPI tmDbAPI;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,25 +22,22 @@ public class GenreOptionActivity extends Activity implements View.OnClickListene
         setAdapter();
         genreListView.setOnItemClickListener(OnItemClickListener());
     }
-
-    void setAdapter() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, tmDbAPI.getGenresNames());
-        genreListView.setAdapter(adapter);
-    }
-
     @Override
     public void onClick(View v) {
 
     }
-
-    AdapterView.OnItemClickListener OnItemClickListener() {
+    public void setAdapter() {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, tmDbAPI.getGenresNames());
+        genreListView.setAdapter(adapter);
+    }
+    public AdapterView.OnItemClickListener OnItemClickListener() {
         return new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent();
                 intent.putExtra("position", position);
-                tmDbAPI.setGenrePosition(position);
+                tmDbAPI.setGenreListId(position);
                 setResult(RESULT_OK, intent);
                 finish();
             }
