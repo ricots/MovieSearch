@@ -1,7 +1,7 @@
 # MovieSearch
 
 Mockups:
-![](MovieSearch/Mockup.png)
+![](https://github.com/vovapupkin/MovieSearch/blob/master/Mockup.png)
 
 #### Dependencies
  * [Ion](https://github.com/koush/ion) - Android Asynchronous Networking and Image Loading
