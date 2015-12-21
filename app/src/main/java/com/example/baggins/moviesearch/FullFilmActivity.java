@@ -1,14 +1,17 @@
 package com.example.baggins.moviesearch;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Response;
@@ -32,6 +35,8 @@ public class FullFilmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_film);
 
+
+
         Intent intent = getIntent();
         tmDbFilm = (TMDbFilm) intent.getSerializableExtra("film");
 
@@ -41,6 +46,8 @@ public class FullFilmActivity extends AppCompatActivity {
                 .withBitmap()
                 .placeholder(R.drawable.backdrop_placeholder_w300)
                 .intoImageView(backdropImage);
+        backdropImage.getLayoutParams().width = getWindowManager().getDefaultDisplay().getWidth();
+        backdropImage.getLayoutParams().height = getWindowManager().getDefaultDisplay().getWidth()*720/1280;
 
         titleImage = (ImageView) findViewById(R.id.title_image);
         Ion.with(this)
@@ -72,6 +79,12 @@ public class FullFilmActivity extends AppCompatActivity {
 
         gallery = (LinearLayout) findViewById(R.id.gallery);
         addFilmsToGallery();
+
+        if(getResources().getConfiguration().orientation == 2) {
+            RelativeLayout relativeLayout = (RelativeLayout)  findViewById(R.id.head);
+            relativeLayout.setVisibility(View.GONE);
+            overview.setVisibility(View.GONE);
+        }
 
         context = this;
     }

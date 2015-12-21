@@ -29,6 +29,8 @@ public class FilmGalleryAdapter extends ArrayAdapter<FilmBackdrop> {
                 .withBitmap()
                 .placeholder(R.drawable.backdrop_placeholder_w780)
                 .intoImageView(view);
+        view.getLayoutParams().width = ((Activity) context).getWindowManager().getDefaultDisplay().getWidth();
+        view.getLayoutParams().height = ((Activity) context).getWindowManager().getDefaultDisplay().getWidth()*720/1280;
         return convertView;
     }
 }
